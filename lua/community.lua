@@ -13,4 +13,6 @@ return {
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.telescope-nvchad-theme" },
+  -- { import = "astrocommunity.snippet.nvim-snippets" },
+  -- { import = "astrocommunity.register.nvim-neoclip-lua" },
 }
