@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -30,8 +30,9 @@ return {
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
-        signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+        -- signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        showtabline = 0,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -44,8 +45,10 @@ return {
     mappings = {
       -- first key is the mode
       n = {
+        L = "$",
+        H = "^",
+        ["<Leader>ss"] = { ":vnew<cr>", desc = "split a new window" },
         -- second key is the lefthand side of the map
-
         -- navigate buffer tabs with `H` and `L`
         -- L = {
         --   function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
