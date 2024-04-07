@@ -11,6 +11,7 @@ return {
   -- import/override with your plugins folder
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.telescope-nvchad-theme" },
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
@@ -19,6 +20,8 @@ return {
   { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
   { import = "astrocommunity.colorscheme.bamboo-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
+  { import = "astrocommunity.editing-support.bigfile-nvim" },
+  -- { import = "astrocommunity.media.codesnap-nvim" },
   -- { import = "astrocommunity.recipes.disable-tabline" },
   -- { import = "astrocommunity.editing-support.yanky-nvim" },
   -- { import = "astrocommunity.snippet.nvim-snippets" },
