@@ -47,7 +47,8 @@ return {
       n = {
         L = "$",
         H = "^",
-        ["<Leader>ss"] = { ":vnew<cr>", desc = "split a new window" },
+        ["<Leader>ss"] = { ":vs<cr>", desc = "split a new window vertically" },
+        ["<Leader>sv"] = { ":sp<cr>", desc = "split a new window horizontally" },
         -- second key is the lefthand side of the map
         -- navigate buffer tabs with `H` and `L`
         -- L = {
