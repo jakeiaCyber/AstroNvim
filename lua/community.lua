@@ -14,20 +14,17 @@ return {
   { import = "astrocommunity.pack.markdown" },
   -- =========tool=========
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
-  -- { import = "astrocommunity.lsp.lsp-lens-nvim" },
-  -- { import = "astrocommunity.lsp.actions-preview-nvim" },
   { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.motion.before-nvim" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
-  -- { import = "astrocommunity.editing-support.nvim-treesitter-context" },
+  { import = "astrocommunity.editing-support.telescope-undo-nvim" },
+  { import = "astrocommunity.editing-support.wildfire-nvim" },
   { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.editing-support.bigfile-nvim" },
   { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
-
-  -- ======colorscheme=====
-  -- { import = "astrocommunity.colorscheme.nordic-nvim" },
-  -- { import = "astrocommunity.colorscheme.rose-pine" },
-  -- { import = "astrocommunity.colorscheme.everforest" },
-  { import = "astrocommunity.colorscheme.vscode-nvim" },
+  { import = "astrocommunity.lsp.lsplinks-nvim" },
+  { import = "astrocommunity.editing-support.vim-visual-multi" },
+  -- ========color=========
+  { import = "astrocommunity.color.headlines-nvim" },
 }
