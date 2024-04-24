@@ -9,9 +9,13 @@ return {
   "AstroNvim/astrocommunity",
   -- ==========pack========
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.yaml" },
   -- =========tool=========
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
   { import = "astrocommunity.motion.flash-nvim" },
@@ -25,6 +29,11 @@ return {
   { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
   { import = "astrocommunity.lsp.lsplinks-nvim" },
   { import = "astrocommunity.editing-support.vim-visual-multi" },
+  { import = "astrocommunity.recipes.vscode-icons" },
+  { import = "astrocommunity.recipes.vscode" },
+  { import = "astrocommunity.project.projectmgr-nvim" },
+  { import = "astrocommunity.lsp.lsp-lens-nvim" },
   -- ========color=========
   { import = "astrocommunity.color.headlines-nvim" },
+  { import = "astrocommunity.color.modes-nvim" },
 }
