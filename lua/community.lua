@@ -26,11 +26,8 @@ return {
   { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.editing-support.bigfile-nvim" },
-  { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
   { import = "astrocommunity.lsp.lsplinks-nvim" },
   { import = "astrocommunity.editing-support.vim-visual-multi" },
-  { import = "astrocommunity.recipes.vscode-icons" },
-  { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.project.projectmgr-nvim" },
   { import = "astrocommunity.lsp.lsp-lens-nvim" },
   -- ========color=========

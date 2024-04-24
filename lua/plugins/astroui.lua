@@ -20,27 +20,6 @@ return {
       },
       astrotheme = { -- a table of overrides/changes when applying the astrotheme theme
         -- Normal = { bg = "#000000" },
-        -- Python
-        ["@none.python"] = { fg = "#c678dd" },
-        ["@variable.python"] = { fg = "#e06c75" },
-        ["@variable.parameter.python"] = { fg = "#e06c75" },
-        ["@operator.python"] = { fg = "#56b6c2" },
-        ["@function.call.python"] = { fg = "#61afef" },
-        ["@lsp.type.function.python"] = { fg = "#61afef" },
-        ["@function.builtin.python"] = { fg = "#61afef" },
-        ["@lsp.typemod.function.defaultLibrary.python"] = { fg = "#61afef" },
-        ["@boolean.python"] = { fg = "#d19a66" },
-        ["@string.escape.python"] = { fg = "#56b6c2" },
-        ["@lsp.type.parameter.python"] = { fg = "#e06c75" },
-        ["@type.python"] = { fg = "#abb2bf" },
-        ["@constant.builtin.python"] = { fg = "#d19a66" },
-        ["@constructor.python"] = { fg = "#61afef" },
-        ["@lsp.type.typeParameter.python"] = { fg = "#e06c75" },
-        ["@lsp.type.type.python"] = { fg = "#e5c06b" },
-        ["@function.method.python"] = { fg = "#56b6c2" },
-        ["@lsp.typemod.method.definition.python"] = { fg = "#56b6c2" },
-        ["@variable.builtin.python"] = { fg = "#e5c06b" },
-        ["@variable.member.python"] = { fg = "#e06c75" },
       },
     },
     -- Icons can be configured throughout the interface
@@ -56,6 +35,19 @@ return {
       LSPLoading8 = "⠧",
       LSPLoading9 = "⠇",
       LSPLoading10 = "⠏",
+    },
+  },
+  status = {
+    separators = {
+      breadcrumbs = "  ",
+      path = "  ",
+    },
+    attributes = {
+      buffer_active = { bold = false, italic = false },
+      diagnostics = { bold = true },
+    },
+    colors = {
+      buffer_overflow_bg = "#2c323c",
     },
   },
 }
