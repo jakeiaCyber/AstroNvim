@@ -33,4 +33,5 @@ return {
   -- ========color=========
   -- { import = "astrocommunity.color.headlines-nvim" },
   -- { import = "astrocommunity.color.modes-nvim" },
+  -- { import = "astrocommunity.color.transparent-nvim" },
 }
