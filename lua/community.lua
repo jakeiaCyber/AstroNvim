@@ -29,7 +29,7 @@ return {
   { import = "astrocommunity.lsp.lsplinks-nvim" },
   { import = "astrocommunity.editing-support.vim-visual-multi" },
   { import = "astrocommunity.project.projectmgr-nvim" },
-  { import = "astrocommunity.lsp.lsp-lens-nvim" },
+  -- { import = "astrocommunity.lsp.lsp-lens-nvim" },
   -- ========color=========
   { import = "astrocommunity.color.headlines-nvim" },
   -- { import = "astrocommunity.color.modes-nvim" },

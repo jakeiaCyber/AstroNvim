@@ -4,7 +4,23 @@ return {
     name = "catppuccin",
     ---@type CatppuccinOptions
     opts = {
+      flavour = "macchiato", -- latte, frappe, macchiato, mocha
       transparent_background = false,
+      styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+        comments = { "italic" }, -- Change the style of comments
+        conditionals = { "italic" },
+        loops = {},
+        functions = { "italic" },
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+        -- miscs = {}, -- Uncomment to turn off hard-coded styles
+      },
       integrations = {
         aerial = true,
         alpha = true,
