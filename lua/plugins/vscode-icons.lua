@@ -6,7 +6,7 @@ return {
       opts.preset = "codicons"
       -- set some missing symbol types
       opts.symbol_map = {
-        Copilot = "",
+        Copilot = " ",
         Text = " ",
         Method = " ",
         Function = " ",

@@ -13,14 +13,10 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 ~/.config/nvim/Session.vim
-badd +34 ~/.config/nvim/lua/plugins/mini-file.lua
-badd +79 ~/.config/nvim/lazy-lock.json
 argglobal
 %argdel
-edit ~/.config/nvim/lazy-lock.json
 argglobal
-balt ~/.config/nvim/lua/plugins/mini-file.lua
+enew
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -29,15 +25,6 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-1,86fold
-let &fdl = &fdl
-let s:l = 79 - ((22 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 79
-normal! 027|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
