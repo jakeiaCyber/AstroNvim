@@ -13,18 +13,16 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
+badd +0 ~/.zshrc
+badd +0 ~/workspace/codes/test.cpp
+badd +0 .git/config
+badd +0 .gitignore
+badd +0 README.md
 badd +0 Session.vim
-badd +0 lua/plugins/astrocore.lua
-badd +0 lua/community.lua
-badd +0 lua/plugins/disable.lua
-badd +0 lua/lazy_setup.lua
-badd +0 lua/plugins/context.lua
-badd +0 lua/plugins/snippet.lua
-badd +0 lua/plugins/whichkey.lua
-badd +23 lua/plugins/vscode-icons.lua
+badd +10 lua/plugins/vscode.lua
 argglobal
 %argdel
-edit lua/plugins/vscode-icons.lua
+edit lua/plugins/vscode.lua
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -36,11 +34,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 23 - ((14 * winheight(0) + 15) / 30)
+let s:l = 10 - ((9 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 23
+keepjumps 10
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
