@@ -54,6 +54,9 @@ return {
         -- signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
         showtabline = 0,
+        scrolloff = 10,
+        cursorline = true,
+        cursorlineopt = "number",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -70,18 +73,6 @@ return {
         H = "^",
         ["<Leader>ss"] = { ":vs<cr>", desc = "split a new window vertically" },
         ["<Leader>sv"] = { ":sp<cr>", desc = "split a new window horizontally" },
-        -- second key is the lefthand side of the map
-        -- navigate buffer tabs with `H` and `L`
-        -- L = {
-        --   function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
-        --   desc = "Next buffer",
-        -- },
-        -- H = {
-        --   function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
-        --   desc = "Previous buffer",
-        -- },
-
-        -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {
           function()
             require("astroui.status.heirline").buffer_picker(
@@ -93,6 +84,7 @@ return {
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         ["<Leader>b"] = { desc = "Buffers" },
+        [";"] = { ":" },
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
       },

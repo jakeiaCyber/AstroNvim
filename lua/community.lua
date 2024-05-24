@@ -17,13 +17,15 @@ return {
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.go" },
   -- =========tool=========
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
   { import = "astrocommunity.motion.flash-nvim" },
   -- { import = "astrocommunity.motion.before-nvim" },
-  { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
+  -- { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.editing-support.telescope-undo-nvim" },
   { import = "astrocommunity.editing-support.wildfire-nvim" },
+  { import = "astrocommunity.scrolling.neoscroll-nvim" },
   -- { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.editing-support.bigfile-nvim" },
@@ -35,4 +37,7 @@ return {
   { import = "astrocommunity.color.headlines-nvim" },
   -- { import = "astrocommunity.color.modes-nvim" },
   -- { import = "astrocommunity.color.transparent-nvim" },
+  -- =========recipes======
+  { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
+  { import = "astrocommunity.media.vim-wakatime" },
 }
