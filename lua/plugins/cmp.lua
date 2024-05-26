@@ -16,10 +16,10 @@ return {
       mapping = {
         ["<CR>"] = cmp.config.disable,
         -- <C-n> and <C-p> for navigating snippets
-        ["<C-l>"] = cmp.mapping(function()
+        ["<C-n>"] = cmp.mapping(function()
           if luasnip.jumpable(1) then luasnip.jump(1) end
         end, { "i", "s" }),
-        ["<C-h>"] = cmp.mapping(function()
+        ["<C-p>"] = cmp.mapping(function()
           if luasnip.jumpable(-1) then luasnip.jump(-1) end
         end, { "i", "s" }),
         ["<C-k>"] = cmp.mapping(

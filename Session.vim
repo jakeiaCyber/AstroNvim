@@ -13,7 +13,7 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +19 init.lua
+badd +0 init.lua
 badd +0 ~/.zshrc
 badd +0 ~/workspace/codes/test.cpp
 badd +0 .git/config
@@ -34,19 +34,22 @@ badd +0 lua/plugins/indent-tools.lua
 badd +0 lua/plugins/disable.lua
 badd +0 lazy-lock.json
 badd +0 lua/plugins/mini-file.lua
-badd +0 lua/plugins/cmp.lua
+badd +38 lua/plugins/cmp.lua
 badd +0 lua/plugins/transparent.lua
-badd +0 lua/plugins/mason.lua
+badd +25 lua/plugins/mason.lua
 badd +0 lua/plugins/context.lua
 badd +0 lua/plugins/none-ls.lua
 badd +0 lua/plugins/notify.lua
-badd +33 lua/plugins/astrocore.lua
+badd +0 lua/plugins/astrocore.lua
 badd +0 lua/lazy_setup.lua
+badd +0 lua/plugins/astrolsp.lua
+badd +0 neovim.yml
+badd +0 selene.toml
 argglobal
 %argdel
-edit lua/plugins/astrocore.lua
+edit lua/plugins/mason.lua
 argglobal
-balt init.lua
+balt lua/plugins/cmp.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -56,32 +59,23 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-14,20fold
-31,34fold
-28,35fold
-27,36fold
-24,37fold
-23,38fold
-22,39fold
-43,44fold
-42,46fold
-50,59fold
-61,64fold
-49,65fold
-77,80fold
-76,82fold
-71,89fold
-91,93fold
-69,94fold
-12,95fold
-9,96fold
+13,15fold
+11,16fold
+8,17fold
+25,28fold
+23,29fold
+20,30fold
+37,39fold
+35,40fold
+32,41fold
+6,42fold
 let &fdl = &fdl
-let s:l = 33 - ((23 * winheight(0) + 17) / 34)
+let s:l = 25 - ((17 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 33
-normal! 08|
+keepjumps 25
+normal! 03|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
