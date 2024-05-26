@@ -37,6 +37,7 @@ return {
   -- { import = "astrocommunity.color.headlines-nvim" },
   -- { import = "astrocommunity.color.modes-nvim" },
   { import = "astrocommunity.color.transparent-nvim" },
+  { import = "astrocommunity.indent.indent-rainbowline" },
   -- =========recipes======
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
   { import = "astrocommunity.media.vim-wakatime" },
