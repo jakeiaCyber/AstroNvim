@@ -7,15 +7,16 @@ return {
       flavour = "frappe", -- latte, frappe, macchiato, mocha
       transparent_background = false,
       styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        comments = { "italic" }, -- Change the style of comments
+        comments = { "italic" },
         conditionals = { "italic" },
-        loops = {},
-        functions = { "italic" },
-        keywords = {},
-        strings = {},
+        functions = { "bold" },
+        constants = { "bold" },
+        keywords = { "italic" },
+        loops = { "italic" },
+        strings = { "italic" },
         variables = {},
         numbers = {},
-        booleans = {},
+        booleans = { "italic" },
         properties = {},
         types = {},
         operators = {},
@@ -43,6 +44,9 @@ return {
         ufo = true,
         which_key = true,
         window_picker = true,
+        inlay_hints = {
+          background = false,
+        },
       },
     },
   },
