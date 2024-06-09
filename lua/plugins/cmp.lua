@@ -41,6 +41,9 @@ return {
       completion = {
         completeopt = "menu,menuone,preview,noinsert",
       },
+      experimental = {
+        ghost_text = true,
+      },
     })
   end,
 }
