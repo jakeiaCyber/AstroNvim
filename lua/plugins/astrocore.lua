@@ -20,39 +20,39 @@ return {
       notifications = true, -- enable notifications at start
     },
     autocmds = {
-      auto_resession = {
-        {
-          event = "VimEnter",
-          desc = "Restore session on open",
-          callback = function()
-            if require("astrocore").is_available "resession.nvim" then
-              local resession = require "resession"
-              -- Only load the session if nvim was started with no args
-              if vim.fn.argc(-1) == 0 then
-                -- Save these to a different directory, so our manual sessions don't get polluted
-                resession.load(vim.fn.getcwd(), { dir = "dirsession", silence_errors = true })
-                vim.cmd.doautoall "BufReadPre"
-              end
-            end
-          end,
-        },
-      },
+      -- auto_resession = {
+      --   {
+      --     event = "VimEnter",
+      --     desc = "Restore session on open",
+      --     callback = function()
+      --       if require("astrocore").is_available "resession.nvim" then
+      --         local resession = require "resession"
+      --         -- Only load the session if nvim was started with no args
+      --         if vim.fn.argc(-1) == 0 then
+      --           -- Save these to a different directory, so our manual sessions don't get polluted
+      --           resession.load(vim.fn.getcwd(), { dir = "dirsession", silence_errors = true })
+      --           vim.cmd.doautoall "BufReadPre"
+      --         end
+      --       end
+      --     end,
+      --   },
+      -- },
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
       virtual_text = {
         prefix = "",
       },
-      underline = true,
+      underline = false,
     },
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
-        relativenumber = false, -- sets vim.opt.relativenumber
+        relativenumber = true, -- sets vim.opt.relativenumber
         number = false, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         -- signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-        wrap = false, -- sets vim.opt.wrap
+        wrap = true, -- sets vim.opt.wrap
         showtabline = 0,
         scrolloff = 10,
         cursorline = true,
