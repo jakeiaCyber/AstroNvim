@@ -35,4 +35,5 @@ return {
   { import = "astrocommunity.completion.cmp-git" },
   { import = "astrocommunity.completion.cmp-spell" },
   { import = "astrocommunity.completion.cmp-under-comparator" },
+  { import = "astrocommunity.game.leetcode-nvim" },
 }
