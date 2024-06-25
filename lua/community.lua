@@ -29,4 +29,10 @@ return {
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.completion.cmp-calc" },
+  { import = "astrocommunity.completion.cmp-cmdline" },
+  { import = "astrocommunity.completion.cmp-emoji" },
+  { import = "astrocommunity.completion.cmp-git" },
+  { import = "astrocommunity.completion.cmp-spell" },
+  { import = "astrocommunity.completion.cmp-under-comparator" },
 }
