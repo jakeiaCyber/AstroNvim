@@ -54,7 +54,7 @@ return {
         -- signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = true, -- sets vim.opt.wrap
         showtabline = 0,
-        scrolloff = 10,
+        scrolloff = 999,
         cursorline = true,
         cursorlineopt = "number",
       },
@@ -71,8 +71,8 @@ return {
       n = {
         L = "$",
         H = "^",
-        ["<Leader>ss"] = { ":vs<cr>", desc = "split a new window vertically" },
-        ["<Leader>sv"] = { ":sp<cr>", desc = "split a new window horizontally" },
+        ["\\"] = { ":vs<cr>", desc = "split a new window vertically" },
+        ["|"] = { ":sp<cr>", desc = "split a new window horizontally" },
         ["<Leader>bD"] = {
           function()
             require("astroui.status.heirline").buffer_picker(
