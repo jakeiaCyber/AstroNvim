@@ -54,7 +54,7 @@ return {
         -- signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = true, -- sets vim.opt.wrap
         showtabline = 0,
-        scrolloff = 999,
+        scrolloff = 0,
         cursorline = true,
         cursorlineopt = "number",
       },

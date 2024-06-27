@@ -28,6 +28,7 @@ return {
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
-  { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
+  { import = "astrocommunity.indent.indent-rainbowline" },
   { import = "astrocommunity.color.transparent-nvim" },
+  { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
 }
