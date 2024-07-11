@@ -72,7 +72,7 @@ return {
         },
       },
       formatting = {
-        fields = { "kind", "abbr", "menu" },
+        fields = { "abbr", "menu", "kind" },
         format = lspkind.cmp_format {
           mode = "symbol_text",
           preset = "codicons",
@@ -90,7 +90,6 @@ return {
               buffer = "(Buffer)",
               path = "(Path)",
               luasnip = "(Snippets)",
-              calc = "(Calc)",
             })[entry.source.name]
 
             vim_item.dup = ({
