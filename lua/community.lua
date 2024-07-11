@@ -27,6 +27,7 @@ return {
   { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.vscode-nvim" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.indent.indent-rainbowline" },
   { import = "astrocommunity.lsp.nvim-lsp-file-operations" },

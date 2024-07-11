@@ -72,7 +72,7 @@ return {
         },
       },
       formatting = {
-        fields = { "abbr", "menu", "kind" },
+        fields = { "kind", "abbr", "menu" },
         format = lspkind.cmp_format {
           mode = "symbol_text",
           preset = "codicons",
