@@ -39,12 +39,12 @@ return {
       -- },
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
-    diagnostics = {
-      virtual_text = {
-        prefix = "",
-      },
-      underline = false,
-    },
+    -- diagnostics = {
+    --   virtual_text = {
+    --     prefix = "",
+    --   },
+    --   underline = false,
+    -- },
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>

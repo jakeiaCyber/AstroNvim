@@ -48,7 +48,7 @@ return {
       window = {
         completion = cmp.config.window.bordered {
           border = {
-            { "󱐋", "WarningMsg" },
+            { "", "WarningMsg" },
             { "─", "Comment" },
             { "╮", "Comment" },
             { "│", "Comment" },
@@ -60,7 +60,7 @@ return {
         },
         documentation = cmp.config.window.bordered {
           border = {
-            { "", "DiagnosticHint" },
+            { "", "DiagnosticHint" },
             { "─", "Comment" },
             { "╮", "Comment" },
             { "│", "Comment" },
