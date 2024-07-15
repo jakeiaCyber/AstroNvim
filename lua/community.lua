@@ -27,7 +27,6 @@ return {
   { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.colorscheme.everforest" },
-  { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.indent.indent-rainbowline" },
   { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
@@ -36,6 +35,6 @@ return {
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   { import = "astrocommunity.debugging.persistent-breakpoints-nvim" },
   { import = "astrocommunity.debugging.telescope-dap-nvim" },
-  { import = "astrocommunity.recipes.neo-tree-dark" },
+  { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.file-explorer.oil-nvim" },
 }
