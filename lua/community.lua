@@ -33,4 +33,7 @@ return {
   { import = "astrocommunity.debugging.persistent-breakpoints-nvim" },
   { import = "astrocommunity.debugging.telescope-dap-nvim" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
+  { import = "astrocommunity.lsp.actions-preview-nvim" },
+  { import = "astrocommunity.icon.mini-icons" },
+  { import = "astrocommunity.recipes.neo-tree-dark" },
 }

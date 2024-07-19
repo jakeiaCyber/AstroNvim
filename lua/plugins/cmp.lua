@@ -3,7 +3,6 @@ return {
   opts = function(_, opts)
     local cmp = require "cmp"
     local luasnip = require "luasnip"
-    local lspkind = require "lspkind"
     local function has_words_before()
       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
       return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
@@ -43,7 +42,7 @@ return {
         completeopt = "menu,menuone,preview,noinsert",
       },
       experimental = {
-        ghost_text = false,
+        ghost_text = true,
       },
       window = {
         completion = cmp.config.window.bordered {
@@ -69,37 +68,6 @@ return {
             { "╰", "Comment" },
             { "│", "Comment" },
           },
-        },
-      },
-      formatting = {
-        fields = { "kind", "abbr", "menu" },
-        format = lspkind.cmp_format {
-          mode = "symbol_text",
-          preset = "codicons",
-          before = function(entry, vim_item)
-            if vim.tbl_contains({ "path" }, entry.source.name) then
-              local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
-              if icon then
-                vim_item.kind = icon
-                vim_item.kind_hl_group = hl_group
-                return vim_item
-              end
-            end
-            vim_item.menu = ({
-              nvim_lsp = "(LSP)",
-              buffer = "(Buffer)",
-              path = "(Path)",
-              luasnip = "(Snippets)",
-            })[entry.source.name]
-
-            vim_item.dup = ({
-              buffer = 1,
-              path = 1,
-              nvim_lsp = 0,
-              snippets = 1,
-            })[entry.source.name] or 0
-            return vim_item
-          end,
         },
       },
     })
