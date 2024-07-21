@@ -4,7 +4,7 @@ return {
   opts = {
     stages = "static",
     render = "compact",
-    max_width = "30",
+    max_width = "18",
     fps = 5,
     level = 1,
     timeout = 1000,
