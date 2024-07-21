@@ -71,8 +71,8 @@ return {
       n = {
         L = "$",
         H = "^",
-        ["\\"] = { ":vs<cr>", desc = "split a new window vertically" },
-        ["|"] = { ":sp<cr>", desc = "split a new window horizontally" },
+        ["<Leader>sw"] = { ":vs<cr>", desc = "split a new window vertically" },
+        ["<Leader>sv"] = { ":sp<cr>", desc = "split a new window horizontally" },
         ["<Leader>bD"] = {
           function()
             require("astroui.status.heirline").buffer_picker(
