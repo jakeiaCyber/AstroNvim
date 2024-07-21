@@ -43,7 +43,7 @@ return {
       local maps = assert(opts.mappings)
 
       -- basic actions
-      maps.n["<Leader>q"] = function() require("vscode-neovim").action "workbench.action.closeWindow" end
+      -- maps.n["<Leader>q"] = function() require("vscode-neovim").action "workbench.action.closeWindow" end
       maps.n["<Leader>w"] = function() require("vscode-neovim").action "workbench.action.files.save" end
       maps.n["<Leader>n"] = function() require("vscode-neovim").action "welcome.showNewFileEntries" end
 
@@ -62,7 +62,7 @@ return {
       -- buffer management
       maps.n["]b"] = "<Cmd>Tabnext<CR>"
       maps.n["[b"] = "<Cmd>Tabprevious<CR>"
-      maps.n["<Leader>c"] = "<Cmd>Tabclose<CR>"
+      maps.n["<Leader>q"] = "<Cmd>Tabclose<CR>"
       maps.n["<Leader>C"] = "<Cmd>Tabclose!<CR>"
       maps.n["<Leader>bp"] = "<Cmd>Tablast<CR>"
 
