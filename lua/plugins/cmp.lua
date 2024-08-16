@@ -10,6 +10,7 @@ return {
     -- NOTE: this function does not merge in place and needs to be
     --       returned at the end of the function
     return require("astrocore").extend_tbl(opts, {
+
       mapping = {
         ["<CR>"] = cmp.config.disable,
         ["<A-n>"] = cmp.mapping(function()
@@ -45,29 +46,14 @@ return {
         ghost_text = true,
       },
       window = {
-        completion = cmp.config.window.bordered {
-          border = {
-            { "", "WarningMsg" },
-            { "─", "Comment" },
-            { "╮", "Comment" },
-            { "│", "Comment" },
-            { "╯", "Comment" },
-            { "─", "Comment" },
-            { "╰", "Comment" },
-            { "│", "Comment" },
-          },
+        border = "rounded",
+        completion = {
+          side_padding = 1,
         },
-        documentation = cmp.config.window.bordered {
-          border = {
-            { "", "DiagnosticHint" },
-            { "─", "Comment" },
-            { "╮", "Comment" },
-            { "│", "Comment" },
-            { "╯", "Comment" },
-            { "─", "Comment" },
-            { "╰", "Comment" },
-            { "│", "Comment" },
-          },
+        documentation = {
+          border = "rounded", -- single|rounded|none
+          -- custom colors
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLineBG,Search:None", -- BorderBG|FloatBorder
         },
       },
     })

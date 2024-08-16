@@ -11,7 +11,7 @@ return {
   ---@type AstroUIOpts
   opts = {
     -- change colorscheme
-    colorscheme = "everforest",
+    colorscheme = "catppuccin-mocha",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
       init = { -- this table overrides highlights in all themes
@@ -34,19 +34,6 @@ return {
       LSPLoading8 = "⠧",
       LSPLoading9 = "⠇",
       LSPLoading10 = "⠏",
-    },
-  },
-  status = {
-    separators = {
-      breadcrumbs = "  ",
-      path = "  ",
-    },
-    attributes = {
-      buffer_active = { bold = false, italic = false },
-      diagnostics = { bold = true },
-    },
-    colors = {
-      buffer_overflow_bg = "#2c323c",
     },
   },
 }
