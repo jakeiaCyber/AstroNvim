@@ -23,4 +23,8 @@ return {
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.lsp.actions-preview-nvim" },
+  { import = "astrocommunity.completion.cmp-calc" }, -- Inline calculations
+  { import = "astrocommunity.completion.cmp-spell" }, -- Inline spelling suggestions
+  { import = "astrocommunity.completion.copilot-lua-cmp" }, -- Automatic code completion through copilot
+  { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 }

@@ -3,6 +3,8 @@ return {
   name = "catppuccin",
   ---@type CatppuccinOptions
   opts = {
+    no_italic = true, -- Force no italic
+    no_underline = true, -- Force no underline
     integrations = {
       aerial = true,
       alpha = true,
