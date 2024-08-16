@@ -16,7 +16,6 @@ return {
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.lsp.lsplinks-nvim" },
   { import = "astrocommunity.media.vim-wakatime" },
-  { import = "astrocommunity.recipes.auto-session-restore" },
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.colorscheme.catppuccin" },
