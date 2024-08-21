@@ -1,170 +1,193 @@
-return { -- override nvim-cmp plugin
-  "hrsh7th/nvim-cmp",
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-emoji",
-    "saadparwaiz1/cmp_luasnip",
-    "zbirenbaum/copilot.lua",
-    "L3MON4D3/LuaSnip",
-    "onsails/lspkind.nvim",
-  },
-  opts = function(_, _opts)
-    local cmp = require "cmp"
-    local luasnip = require "luasnip"
-    local copilot_suggestion = require "copilot.suggestion"
+local function has_words_before()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+end
 
-    local function is_word_before_cursor(words)
-      local line = vim.api.nvim_get_current_line()
-      local col = vim.api.nvim_win_get_cursor(0)[2]
-      local before_cursor = line:sub(1, col):lower()
+local function mapping(is_cmdline)
+  if is_cmdline == nil then is_cmdline = false end
+  local cmp = require "cmp"
+  local luasnip = require "luasnip"
 
-      for _, word in ipairs(words) do
-        if before_cursor:match(word .. "%s*$") then return true end
+  return {
+    ["<CR>"] = cmp.config.disable,
+    -- ctrl + e close cmp window
+    -- <C-n> and <C-p> for navigating snippets
+    ["<C-N>"] = cmp.mapping(function()
+      if luasnip.jumpable(1) then luasnip.jump(1) end
+    end, { "i", "c" }),
+    ["<C-P>"] = cmp.mapping(function()
+      if luasnip.jumpable(-1) then luasnip.jump(-1) end
+    end, { "i", "c" }),
+    ["<C-K>"] = cmp.mapping(function() cmp.select_prev_item { behavior = cmp.SelectBehavior.Select } end, { "i", "c" }),
+    ["<C-J>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+      else
+        cmp.complete()
       end
-      return false
-    end
+    end, { "i", "c" }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if is_cmdline then
+        if cmp.visible() then
+          cmp.confirm()
+        else
+          fallback()
+        end
+      else
+        if cmp.visible() and has_words_before() then
+          cmp.confirm { select = true }
+        else
+          fallback()
+        end
+      end
+    end, { "i", "c" }),
+    ["<S-Tab>"] = cmp.config.disable,
+  }
+end
 
-    local comment_annotation_snippet = {
-      "fixme",
-      "fix",
-      "todo",
-      "hack",
-      "warn",
-      "perf",
-      "note",
-      "test",
-    }
+local function trim(s)
+  if s == nil then return "" end
+  return (s:gsub("^%s*(.-)%s*$", "%1"))
+end
 
-    local copilot_timer = nil
-    local function pause_copilot(duration)
-      -- Cancel previous timer if it exists
-      if copilot_timer then vim.fn.timer_stop(copilot_timer) end
+local function truncateString(s, maxLength)
+  if #s > maxLength then
+    return string.sub(s, 1, maxLength) .. "..."
+  else
+    return s
+  end
+end
 
-      -- Disable Copilot suggestions
-      copilot_suggestion.toggle_auto_trigger()
+local function getMethodName(s) return string.gsub(s, "%(.*%)", "") end
 
-      -- Schedule re-enabling after the specified duration
-      copilot_timer = vim.defer_fn(function()
-        copilot_suggestion.toggle_auto_trigger()
-        copilot_timer = nil
-      end, duration * 1000) -- Convert seconds to milliseconds
-    end
+local formatting_style = {
+  fields = { "abbr", "menu", "kind" },
+  format = function(_, item)
+    local icons = require "icons.lspkind"
+    local icon = icons[item.kind] or ""
+    item.kind = string.format("%s %s ", icon, trim(item.kind))
+    item.abbr = getMethodName(trim(item.abbr))
+    item.menu = truncateString(trim(item.menu), 10)
+    return item
+  end,
+}
 
-    local cmp_timer = nil
-    local function pause_cmp(duration)
-      -- Cancel previous timer if it exists
-      if cmp_timer then vim.fn.timer_stop(cmp_timer) end
+---@type LazySpec
+return {
+  "hrsh7th/nvim-cmp",
+  specs = {
+    {
+      "hrsh7th/cmp-cmdline",
+      keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
+      opts = function()
+        local cmp = require "cmp"
+        return {
+          {
+            type = "/",
+            mapping = mapping(true),
+            sources = {
+              { name = "buffer" },
+            },
+          },
+          {
+            type = ":",
+            mapping = mapping(true),
+            sources = cmp.config.sources({
+              { name = "path" },
+            }, {
+              {
+                name = "cmdline",
+                option = {
+                  ignore_cmds = { "Man", "!" },
+                },
+              },
+            }),
+          },
+        }
+      end,
+      config = function(_, opts)
+        local cmp = require "cmp"
+        vim.tbl_map(function(val) cmp.setup.cmdline(val.type, val) end, opts)
+      end,
+    },
+  },
+  dependencies = {
+    "hrsh7th/cmp-calc",
+    "hrsh7th/cmp-emoji",
+    "jc-doyle/cmp-pandoc-references",
+    "kdheepak/cmp-latex-symbols",
+  },
+  opts = function(_, opts)
+    local cmp = require "cmp"
+    local compare = require "cmp.config.compare"
 
-      require("cmp").setup.buffer { enabled = false }
-
-      -- Schedule re-enabling after the specified duration
-      cmp_timer = vim.defer_fn(function()
-        require("cmp").setup.buffer { enabled = true }
-        cmp_timer = nil
-      end, duration * 1000) -- Convert seconds to milliseconds
-    end
-
-    return {
-      mapping = cmp.mapping.preset.insert {
-        ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-        ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if luasnip.expandable() and is_word_before_cursor(comment_annotation_snippet) then
-            luasnip.expand()
-          elseif luasnip.jumpable(1) then
-            luasnip.jump(1)
-          elseif copilot_suggestion.is_visible() then
-            copilot_suggestion.accept()
-          else
-            fallback() -- tabout plugin / default tab behavior
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          elseif cmp.visible() then
-            cmp.select_prev_item()
-          else
-            fallback() -- tabout plugin / default tab behavior
-          end
-        end, { "i", "s" }),
-        ["<BS>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.abort()
-            -- after hitting backspace to dismiss a cmp suggestion, wait <n>
-            -- seconds before re-enabling so we can use the tabout fallback
-            -- to get out of quotes or parens, etc.
-            pause_cmp(5)
-          elseif copilot_suggestion.is_visible() then
-            -- after hitting backspace to dismiss a copilot suggestion, wait <n>
-            -- seconds before re-enabling so we can use the tabout fallback to
-            -- get out of quotes or parens, etc.
-            pause_copilot(5)
-            copilot_suggestion.dismiss()
-          else
-            fallback()
-          end
-        end, { "i" }),
-      },
+    return require("astrocore").extend_tbl(opts, {
+      formatting = formatting_style,
       sources = cmp.config.sources {
-        { name = "luasnip", priority = 1000 },
-        { name = "copilot", priority = 900 },
-        { name = "nvim_lsp", priority = 800 },
+        {
+          name = "nvim_lsp",
+          ---@param entry cmp.Entry
+          ---@param ctx cmp.Context
+          entry_filter = function(entry, ctx)
+            -- Check if the buffer type is 'vue'
+            if ctx.filetype ~= "vue" then return true end
+
+            local cursor_before_line = ctx.cursor_before_line
+            -- For events
+            if cursor_before_line:sub(-1) == "@" then
+              return entry.completion_item.label:match "^@"
+              -- For props also exclude events with `:on-` prefix
+            elseif cursor_before_line:sub(-1) == ":" then
+              return entry.completion_item.label:match "^:" and not entry.completion_item.label:match "^:on-"
+            else
+              return true
+            end
+          end,
+          priority = 1000,
+        },
+        { name = "luasnip", priority = 750 },
+        { name = "pandoc_references", priority = 725 },
+        { name = "latex_symbols", priority = 700 },
         { name = "emoji", priority = 700 },
-        { name = "buffer", priority = 500 },
-        { name = "path", priority = 250 },
+        { name = "calc", priority = 650 },
+        { name = "path", priority = 500 },
+        { name = "buffer", priority = 250 },
       },
-      formatting = {
-        format = function(entry, vim_item)
-          vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
-          vim_item.menu = ({
-            luasnip = "[Snippet]",
-            copilot = "[Copilot]",
-            nvim_lsp = "[LSP]",
-            emoji = "[Emoji]",
-            buffer = "[Buffer]",
-            path = "[Path]",
-          })[entry.source.name]
-          return vim_item
-        end,
+      sorting = {
+        comparators = {
+          compare.offset,
+          compare.exact,
+          compare.score,
+          compare.recently_used,
+          function(entry1, entry2)
+            local _, entry1_under = entry1.completion_item.label:find "^_+"
+            local _, entry2_under = entry2.completion_item.label:find "^_+"
+            entry1_under = entry1_under or 0
+            entry2_under = entry2_under or 0
+            if entry1_under > entry2_under then
+              return false
+            elseif entry1_under < entry2_under then
+              return true
+            end
+          end,
+          compare.kind,
+          compare.sort_text,
+          compare.length,
+          compare.order,
+        },
       },
       completion = {
-        completeopt = "menu,menuone,noinsert", -- ,noselect is another option
+        -- auto select first item
+        completeopt = "menu,menuone,preview,noinsert",
       },
-      experimental = {
-        ghost_text = true,
-        custom_menu = true,
-      },
+      mapping = mapping(),
       window = {
-        border = "rounded",
         completion = {
           col_offset = 1,
           side_padding = 1,
           scrollbar = false,
         },
       },
-
-      -- Hide copilot suggestions if the cmp menu is open or the specific
-      -- comment annotation keywords are present: fixme, fix, todo, hack, warn,
-      -- perf, note, test
-      cmp.event:on("menu_opened", function()
-        if is_word_before_cursor(comment_annotation_snippet) then
-          print "fixme is present"
-          vim.b.copilot_suggestion_hidden = true
-        else
-          print "no special word"
-          vim.b.copilot_suggestion_hidden = false
-        end
-      end),
-
-      cmp.event:on("menu_closed", function() vim.b.copilot_suggestion_hidden = false end),
-    }
+    })
   end,
 }
