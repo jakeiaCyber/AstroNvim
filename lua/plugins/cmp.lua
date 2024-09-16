@@ -1,44 +1,7 @@
-local function has_words_before()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
-end
-
 local function mapping()
   local cmp = require "cmp"
-  local luasnip = require "luasnip"
 
   return {
-    -- ["<CR>"] = cmp.confirm,
-    -- -- ctrl + e close cmp window
-    -- -- <C-n> and <C-p> for navigating snippets
-    -- ["<C-N>"] = cmp.mapping(function()
-    --   if luasnip.jumpable(1) then luasnip.jump(1) end
-    -- end, { "i", "s" }),
-    -- ["<C-P>"] = cmp.mapping(function()
-    --   if luasnip.jumpable(-1) then luasnip.jump(-1) end
-    -- end, { "i", "s" }),
-    -- ["<C-K>"] = cmp.mapping(function() cmp.select_prev_item { behavior = cmp.SelectBehavior.Select } end, { "i", "s" }),
-    -- ["<C-J>"] = cmp.mapping(function()
-    --   if cmp.visible() then
-    --     cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-    --   else
-    --     cmp.complete()
-    --   end
-    -- end, { "i", "s" }),
-    -- ["<Tab>"] = cmp.mapping(function(fallback)
-    --   -- get current mode
-    --   local mode = vim.api.nvim_get_mode().mode
-    --   if cmp.visible() then
-    --     if mode == "c" then
-    --       cmp.confirm { select = true }
-    --     else
-    --       if has_words_before() then cmp.confirm {} end
-    --     end
-    --   else
-    --     fallback()
-    --   end
-    -- end, { "i", "s", "c" }),
-    -- ["<S-Tab>"] = cmp.config.disable,
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
