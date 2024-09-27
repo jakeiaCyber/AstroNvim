@@ -87,7 +87,7 @@ return {
       maps.n["<Leader>fc"] = function()
         require("vscode-neovim").action("workbench.action.findInFiles", { args = { query = vim.fn.expand "<cword>" } })
       end
-      maps.n["<Leader>fC"] = function() require("vscode-neovim").action "workbench.action.showCommands" end
+      maps.n["<Leader>fp"] = function() require("vscode-neovim").action "workbench.action.showCommands" end
       maps.n["<Leader>ff"] = function() require("vscode-neovim").action "workbench.action.quickOpen" end
       maps.n["<Leader>fn"] = function() require("vscode-neovim").action "notifications.showList" end
       maps.n["<Leader>fo"] = function() require("vscode-neovim").action "workbench.action.openRecent" end
