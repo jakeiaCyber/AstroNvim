@@ -14,12 +14,10 @@ return {
   { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.lsp.lsplinks-nvim" },
-  -- { import = "astrocommunity.media.vim-wakatime" },
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.lsp.actions-preview-nvim" },
-  -- { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   { import = "astrocommunity.utility.noice-nvim" },
-  { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.everforest" },
   { import = "astrocommunity.utility.nvim-toggler" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 }

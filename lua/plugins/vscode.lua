@@ -92,7 +92,7 @@ return {
       maps.n["<Leader>fn"] = function() require("vscode-neovim").action "notifications.showList" end
       maps.n["<Leader>fo"] = function() require("vscode-neovim").action "workbench.action.openRecent" end
       maps.n["<Leader>ft"] = function() require("vscode-neovim").action "workbench.action.selectTheme" end
-      maps.n["<Leader>fw"] = function() require("vscode-neovim").action "workbench.action.findInFiles" end
+      maps.n["<Leader>fw"] = function() require("vscode-neovim").action "workbench.action.quickTextSearch" end
 
       -- git client
       maps.n["<Leader>gg"] = function() require("vscode-neovim").action "workbench.view.scm" end
