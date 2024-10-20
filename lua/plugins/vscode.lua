@@ -115,7 +115,7 @@ return {
       maps.n["<Leader>pa"] = function() require("vscode-neovim").action "projectManager.saveProject" end
       maps.n["<Leader>po"] = function() require("vscode-neovim").action "projectManager.listProjectsNewWindow" end
       maps.n["<Leader>pe"] = function() require("vscode-neovim").action "projectManager.editProjects" end
-      
+
       -- dynofile
       maps.n["<Leader>na"] = function() require("vscode-neovim").action "dynoFileUtils.newItems" end
     end,
