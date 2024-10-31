@@ -9,9 +9,11 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
+  { import = "astrocommunity.colorscheme.catppuccin" },
 }

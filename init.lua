@@ -19,4 +19,3 @@ require "lazy_setup"
 require "polish"
 
 vim.diagnostic.config { update_in_insert = false }
-vim.o.cmdheight = 1
