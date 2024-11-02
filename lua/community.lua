@@ -8,7 +8,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.markdown" },
+  -- { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
