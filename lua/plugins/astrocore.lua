@@ -32,7 +32,6 @@ return {
         scrolloff = 0,
         cursorline = true,
         cursorlineopt = "number",
-        background = "light",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
