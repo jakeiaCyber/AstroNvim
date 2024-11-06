@@ -17,6 +17,8 @@ return {
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
-  { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
+  { import = "astrocommunity.indent.indent-blankline-nvim" },
+  { import = "astrocommunity.diagnostics.error-lens-nvim" },
+  { import = "astrocommunity.icon.mini-icons" },
 }
