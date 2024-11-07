@@ -9,66 +9,30 @@
 return {
   "AstroNvim/astroui",
   ---@type AstroUIOpts
+
+  dependencies = { "echasnovski/mini.icons" },
   opts = {
     -- change colorscheme
     colorscheme = "catppuccin-latte",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
-      init = { -- this table overrides highlights in all themes
-        -- Normal = { bg = "#000000" },
-      },
-      astrotheme = { -- a table of overrides/changes when applying the astrotheme theme
-        -- Normal = { bg = "#000000" },
-      },
-    },
-    -- Icons can be configured throughout the interface
-    icons = {
-      ActiveLSP = "",
-      ActiveTS = "",
-      ArrowLeft = "",
-      ArrowRight = "",
-      BufferClose = "󰅖",
-      DapBreakpoint = "",
-      DapBreakpointCondition = "",
-      DapBreakpointRejected = "",
-      DapLogPoint = ".>",
-      DapStopped = "󰁕",
-      DefaultFile = "󰈙",
-      Diagnostic = "󰒡",
-      DiagnosticError = "",
-      DiagnosticHint = "󰌵",
-      DiagnosticInfo = "󰋼",
-      DiagnosticWarn = "",
-      Ellipsis = "…",
-      FileModified = "",
-      FileReadOnly = "",
-      FoldClosed = "",
-      FoldOpened = "",
-      FoldSeparator = " ",
-      FolderClosed = "",
-      FolderEmpty = "",
-      FolderOpen = "",
-      Git = "󰊢",
-      GitAdd = "",
-      GitBranch = "",
-      GitChange = "",
-      GitConflict = "",
-      GitDelete = "",
-      GitIgnored = "◌",
-      GitRenamed = "➜",
-      GitStaged = "✓",
-      GitUnstaged = "✗",
-      GitUntracked = "★",
-      LSPLoaded = "",
-      LSPLoading1 = "",
-      LSPLoading2 = "󰀚",
-      LSPLoading3 = "",
-      MacroRecording = "",
-      Paste = "󰅌",
-      Search = "",
-      Selected = "❯",
-      Spellcheck = "󰓆",
-      TabClose = "󰅙",
+      init = function()
+        local get_hlgroup = require("astroui").get_hlgroup
+        -- get highlights from highlight groups
+        local lsp_icons = require("mini.icons").list "lsp"
+
+        local hls = {}
+
+        for _, icon_key in pairs(lsp_icons) do
+          local _, hl, _ = require("mini.icons").get("lsp", icon_key)
+          local icon_hl = get_hlgroup(hl)
+          hls["CmpMini" .. hl] = { fg = icon_hl.fg, bg = "#d0d5e3" }
+        end
+
+        -- return a table of highlights for telescope based on
+        -- colors gotten from highlight groups
+        return hls
+      end,
     },
   },
 }
