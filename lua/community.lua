@@ -21,4 +21,5 @@ return {
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
+  { import = "astrocommunity.icon.mini-icons" },
 }
