@@ -45,6 +45,7 @@ return {
     "AstroNvim/astrocore",
     ---@param opts AstroCoreOpts
     opts = function(_, opts)
+      opts.options.opt.cmdheight = 1 -- 设置 cmdheight
       local maps = assert(opts.mappings)
 
       -- basic actions
@@ -65,8 +66,8 @@ return {
       maps.n["<C-'>"] = function() require("vscode-neovim").action "workbench.action.terminal.toggleTerminal" end
 
       -- buffer management
-      maps.n["]b"] = "<Cmd>Tabnext<CR>"
-      maps.n["[b"] = "<Cmd>Tabprevious<CR>"
+      maps.n["<Tab>"] = "<Cmd>Tabnext<CR>"
+      maps.n["<S-Tab>"] = "<Cmd>Tabprevious<CR>"
       maps.n["<Leader>c"] = "<Cmd>Tabclose<CR>"
       maps.n["<Leader>C"] = "<Cmd>Tabclose!<CR>"
       maps.n["<Leader>bp"] = "<Cmd>Tablast<CR>"
