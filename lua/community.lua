@@ -12,7 +12,7 @@ return {
   { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
-  { import = "astrocommunity.recipes.disable-tabline" },
+  -- { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
@@ -21,5 +21,9 @@ return {
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
+  { import = "astrocommunity.editing-support.bigfile-nvim" },
   { import = "astrocommunity.icon.mini-icons" },
+  { import = "astrocommunity.debugging.persistent-breakpoints-nvim" },
+  { import = "astrocommunity.debugging.telescope-dap-nvim" },
+  { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
 }

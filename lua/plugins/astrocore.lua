@@ -28,7 +28,7 @@ return {
         spell = false, -- sets vim.opt.spell
         -- signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = true, -- sets vim.opt.wrap
-        showtabline = 0,
+        showtabline = 10,
         scrolloff = 0,
         cursorline = true,
         cursorlineopt = "number",
@@ -56,7 +56,7 @@ return {
           end,
           desc = "Pick to close",
         },
-        -- ["<Tab>"] = { function() require("astrocore.buffer").nav(1) end, desc = "Next buffer" },
+        ["<Tab>"] = { function() require("astrocore.buffer").nav(1) end, desc = "Next buffer" },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         [";"] = { ":" },
