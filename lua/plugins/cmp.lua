@@ -1,64 +1,100 @@
+local function tailwind(entry, item)
+  local entryItem = entry:get_completion_item()
+  local color = entryItem.documentation
+  if color and type(color) == "string" and color:match "^#%x%x%x%x%x%x$" then
+    local hl = "hex-" .. color:sub(2)
+    if #vim.api.nvim_get_hl(0, { name = hl }) == 0 then vim.api.nvim_set_hl(0, hl, { fg = color }) end
+    item.kind = " 󱓻 "
+    item.kind_hl_group = hl
+  end
+end
+local function has_words_before()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+end
 local function mapping()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
-
   return {
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.close(),
-
     ["<CR>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     },
-
+    -- ctrl + e close cmp window
+    -- <C-n> and <C-p> for navigating snippets
+    ["<C-N>"] = cmp.mapping(function()
+      if luasnip.jumpable(1) then luasnip.jump(1) end
+    end, { "i", "s" }),
+    ["<C-P>"] = cmp.mapping(function()
+      if luasnip.jumpable(-1) then luasnip.jump(-1) end
+    end, { "i", "s" }),
+    ["<C-K>"] = cmp.mapping(function() cmp.select_prev_item { behavior = cmp.SelectBehavior.Select } end, { "i", "s" }),
+    ["<C-J>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+      else
+        cmp.complete()
+      end
+    end, { "i", "s" }),
     ["<Tab>"] = cmp.mapping(function(fallback)
+      -- get current mode
+      local mode = vim.api.nvim_get_mode().mode
       if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+        if mode == "c" then
+          cmp.confirm { select = true }
+        else
+          if has_words_before() then cmp.confirm {} end
+        end
       else
         fallback()
       end
-    end, { "i", "s" }),
-
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+    end, { "i", "s", "c" }),
+    ["<S-Tab>"] = cmp.config.disable,
   }
 end
-
 ---@type LazySpec
 return {
   "hrsh7th/nvim-cmp",
   specs = {
+    {
+      "hrsh7th/cmp-cmdline",
+      event = "VeryLazy",
+      keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
+      opts = function()
+        local cmp = require "cmp"
+        return {
+          {
+            type = "/",
+            mapping = mapping(),
+            sources = {
+              { name = "buffer" },
+            },
+          },
+          {
+            type = ":",
+            mapping = mapping(),
+            sources = cmp.config.sources({
+              { name = "path" },
+            }, {
+              {
+                name = "cmdline",
+                option = {
+                  ignore_cmds = { "Man", "!" },
+                },
+              },
+            }),
+          },
+        }
+      end,
+      config = function(_, opts)
+        local cmp = require "cmp"
+        vim.tbl_map(function(val) cmp.setup.cmdline(val.type, val) end, opts)
+      end,
+    },
     "AstroNvim/astroui",
   },
   opts = function(_, opts)
-    local compare = require "cmp.config.compare"
-
     return require("astrocore").extend_tbl(opts, {
-      sorting = {
-        comparators = {
-          compare.offset,
-          compare.exact,
-          compare.score,
-          compare.recently_used,
-          compare.kind,
-          compare.sort_text,
-          compare.length,
-          compare.order,
-        },
-      },
       completion = {
         completeopt = "menu,menuone,preview,noinsert",
       },
@@ -79,27 +115,23 @@ return {
               item[key] = vim.fn.strcharpart(str.trim(item[key]), 0, width - 1) .. "…"
             end
           end
-
           local icon, hl, _ = require("mini.icons").get("lsp", item.kind or "")
           item.abbr = item.abbr
           item.kind = " " .. icon .. " "
-          item.kind_hl_group = "CmpMini" .. hl
-
+          item.kind_hl_group = hl
+          tailwind(entry, item)
           return item
         end,
-
         fields = { "kind", "abbr", "menu" },
       },
       window = {
         completion = {
-          col_offset = 0,
-          side_padding = 0,
           scrollbar = false,
           winhighlight = "Normal:CmpDocumentation,CursorLine:PmenuSel,Search:None,FloatBorder:CmpDocumentationBorder",
-          border = "none",
+          border = "rounded",
         },
         documentation = {
-          border = "none",
+          border = "rounded",
           winhighlight = "Normal:CmpDocumentation,FloatBorder:CmpDocumentationBorder",
         },
       },
