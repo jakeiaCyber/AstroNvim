@@ -9,7 +9,7 @@ return {
       bigfile = { enabled = not vim.tbl_get(astrocore.config, "autocmds", "large_buf_settings") },
       notifier = {
         enabled = not astrocore.is_available "nvim-notify",
-        timeout = 100,
+        timeout = 1000,
       },
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
