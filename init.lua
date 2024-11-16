@@ -17,22 +17,3 @@ end
 
 require "lazy_setup"
 require "polish"
-
-vim.diagnostic.config {
-  virtual_text = {
-    prefix = "",
-    suffix = "",
-    underline = true,
-    float = { border = "single" },
-    format = function(diagnostic) return "󰍡 " .. diagnostic.message .. " " end,
-  },
-  signs = {
-    text = {
-      [vim.diagnostic.severity.HINT] = "󱐮",
-      [vim.diagnostic.severity.ERROR] = "✘",
-      [vim.diagnostic.severity.INFO] = "◉",
-      [vim.diagnostic.severity.WARN] = "",
-    },
-  },
-  update_in_insert = false,
-}
