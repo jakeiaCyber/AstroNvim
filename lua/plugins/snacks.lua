@@ -1,7 +1,7 @@
 return {
   "folke/snacks.nvim",
   priority = 10000,
-  lazy = false,
+  event = "VeryLazy",
   ---@param opts snacks.Config
   opts = function(_, opts)
     local astrocore = require "astrocore"
