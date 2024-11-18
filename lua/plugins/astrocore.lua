@@ -68,6 +68,10 @@ return {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
       },
+      i = {
+        ["<C-l>"] = "<Right>",
+        ["<C-h>"] = "<Left>",
+      },
     },
   },
 }
