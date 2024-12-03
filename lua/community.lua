@@ -18,6 +18,7 @@ return {
   -- { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
   { import = "astrocommunity.editing-support.bigfile-nvim" },
