@@ -17,7 +17,3 @@ end
 
 require "lazy_setup"
 require "polish"
-
-vim.diagnostic.config {
-  update_in_insert = false,
-}
