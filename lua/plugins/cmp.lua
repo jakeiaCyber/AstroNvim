@@ -122,11 +122,11 @@ return {
           completion = cmp.config.window.bordered {
             col_offset = -2,
             side_padding = 0,
-            border = "rounded",
+            border = "none",
             winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
           },
           documentation = cmp.config.window.bordered {
-            border = "rounded",
+            border = "none",
             winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
           },
         },
