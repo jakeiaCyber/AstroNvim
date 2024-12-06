@@ -107,7 +107,7 @@ return {
           return vim.F.if_nil(vim.b.cmp_enabled, astro.config.features.cmp)
         end,
         preselect = cmp.PreselectMode.None,
-        formatting = { fields = { "kind", "abbr", "menu" }, format = format },
+        formatting = { fields = { "abbr", "kind", "menu" }, format = format },
         confirm_opts = {
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
