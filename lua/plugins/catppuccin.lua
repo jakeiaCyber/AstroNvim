@@ -26,7 +26,7 @@ return {
         conditionals = { "italic" },
         loops = { "italic" },
         functions = { "italic" },
-        keywords = { "bold" },
+        keywords = {},
         strings = {},
         variables = {},
         numbers = {},
