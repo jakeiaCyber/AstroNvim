@@ -5,7 +5,7 @@ return {
   config = function()
     -- Default configuration
     require("tiny-inline-diagnostic").setup {
-      preset = "powerline", -- Can be: "modern", "classic", "minimal", "powerline", ghost", "simple", "nonerdfont", "amongus"
+      preset = "ghost", -- Can be: "modern", "classic", "minimal", "powerline", ghost", "simple", "nonerdfont", "amongus"
       options = {
         throttle = 0,
         softwrap = 50,
