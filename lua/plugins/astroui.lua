@@ -9,10 +9,10 @@
 return {
   "AstroNvim/astroui",
   ---@type AstroUIOpts
-
+  dependencies = { "echasnovski/mini.icons" },
   opts = {
     -- change colorscheme
-    colorscheme = "tokyonight-moon",
+    colorscheme = "tokyonight-storm",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
       init = { -- this table overrides highlights in all themes
