@@ -13,9 +13,7 @@ return {
   { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
-  { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
-  { import = "astrocommunity.editing-support.bigfile-nvim" },
-  { import = "astrocommunity.utility.noice-nvim" },
+  { import = "astrocommunity.lsp.actions-preview-nvim" },
 }
