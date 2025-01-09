@@ -1,26 +1,3 @@
-local function get_icon(ctx)
-  local mini_icons = require "mini.icons"
-  local source = ctx.item.source_name
-  local label = ctx.item.label
-  local color = ctx.item.documentation
-
-  if source == "LSP" then
-    if color and type(color) == "string" and color:match "^#%x%x%x%x%x%x$" then
-      local hl = "hex-" .. color:sub(2)
-      if #vim.api.nvim_get_hl(0, { name = hl }) == 0 then vim.api.nvim_set_hl(0, hl, { fg = color }) end
-      return "󱓻", hl, false
-    else
-      return mini_icons.get("lsp", ctx.kind)
-    end
-  elseif source == "Path" then
-    return (label:match "%.[^/]+$" and mini_icons.get("file", label) or mini_icons.get("directory", label))
-  elseif source == "codeium" then
-    return mini_icons.get("lsp", "event")
-  else
-    return ctx.kind_icon, "BlinkCmpKind" .. ctx.kind, false
-  end
-end
-
 return {
   "saghen/blink.cmp",
   event = { "InsertEnter", "CmdlineEnter" },
@@ -85,6 +62,10 @@ return {
       },
     },
     keymap = {
+      cmdline = {
+        preset = "enter",
+        ["<Tab>"] = { "accept", "fallback" },
+      },
       ["<C-P>"] = { "select_prev", "fallback" },
       ["<C-N>"] = { "select_next", "fallback" },
       ["<C-U>"] = { "scroll_documentation_up", "fallback" },
