@@ -65,6 +65,7 @@ return {
       cmdline = {
         preset = "enter",
         ["<Tab>"] = { "accept", "fallback" },
+        ["<CR>"] = { "fallback" },
       },
       ["<C-P>"] = { "select_prev", "fallback" },
       ["<C-N>"] = { "select_next", "fallback" },
