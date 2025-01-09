@@ -63,7 +63,7 @@ return {
 
       -- terminal
       maps.n["<F7>"] = function() require("vscode-neovim").action "workbench.action.terminal.toggleTerminal" end
-      maps.n["<C-'>"] = function() require("vscode-neovim").action "workbench.action.terminal.toggleTerminal" end
+      maps.n["<Leader>t>"] = function() require("vscode-neovim").action "workbench.action.terminal.toggleTerminal" end
 
       -- buffer management
       maps.n["<Tab>"] = "<Cmd>Tabnext<CR>"

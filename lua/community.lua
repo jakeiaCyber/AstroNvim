@@ -7,13 +7,10 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
+  { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.cpp" },
-  { import = "astrocommunity.pack.markdown" },
-  { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.motion.flash-nvim" },
-  { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
-  { import = "astrocommunity.lsp.actions-preview-nvim" },
 }
