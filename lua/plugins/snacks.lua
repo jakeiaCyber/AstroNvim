@@ -9,15 +9,44 @@ return {
       input = { enabled = true },
       debug = { enabled = true },
       indent = {
-        enabled = true,
-        filter = function(buf)
-          local forbidden_filetypes = { "markdown", "markdown.mdx" } -- Add your forbidden filetypes here
-          local filetype = vim.bo[buf].filetype
-          for _, ft in ipairs(forbidden_filetypes) do
-            if filetype == ft then return false end
-          end
-          return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
-        end,
+        indent = {
+          char = " ",
+          only_scope = true,
+          only_current = true,
+          hl = {
+            "SnacksIndent1",
+            "SnacksIndent2",
+            "SnacksIndent3",
+            "SnacksIndent4",
+            "SnacksIndent5",
+            "SnacksIndent6",
+            "SnacksIndent7",
+            "SnacksIndent8",
+          },
+        },
+        animate = {
+          duration = {
+            step = 10,
+            duration = 100,
+          },
+        },
+        scope = {
+          enabled = true, -- enable highlighting the current scope
+          priority = 200,
+          char = "┋",
+          underline = false, -- underline the start of the scope
+          only_current = true, -- only show scope in the current window
+          hl = {
+            "SnacksIndent1",
+            "SnacksIndent2",
+            "SnacksIndent3",
+            "SnacksIndent4",
+            "SnacksIndent5",
+            "SnacksIndent6",
+            "SnacksIndent7",
+            "SnacksIndent8",
+          },
+        },
       },
       notifier = { enabled = true },
       scope = { enabled = true },
