@@ -21,4 +21,3 @@ require "polish"
 vim.diagnostic.config {
   update_in_insert = false,
 }
-vim.diagnostic.config()
