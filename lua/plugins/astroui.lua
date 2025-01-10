@@ -9,7 +9,6 @@
 return {
   "AstroNvim/astroui",
   ---@type AstroUIOpts
-  dependencies = { "echasnovski/mini.icons" },
   opts = {
     -- change colorscheme
     colorscheme = "catppuccin-latte",

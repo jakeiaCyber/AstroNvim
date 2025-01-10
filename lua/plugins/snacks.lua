@@ -22,9 +22,15 @@ return {
       notifier = { enabled = true },
       scope = { enabled = true },
       scroll = { enabled = true },
+      dashboard = { example = "advanced" },
     },
   },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
   { "rcarriga/nvim-notify", enabled = false },
   { "NMAC427/guess-indent.nvim", enabled = false },
+  { "goolord/alpha-nvim", enabled = false },
+  {
+    "rebelot/heirline.nvim",
+    opts = function(_, opts) opts.winbar = nil end,
+  },
 }
